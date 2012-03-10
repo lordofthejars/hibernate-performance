@@ -61,7 +61,7 @@ public class Starship {
 	}
 	
 	public Starship(String registry) {
-		this.registry = registry;
+		setRegistry(registry);
 	}
 	
 	@Override
