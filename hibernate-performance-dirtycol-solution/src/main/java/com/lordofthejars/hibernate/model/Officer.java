@@ -14,7 +14,7 @@ public class Officer {
 
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE) private Long id;
 	public Long getId() {return id;}
-	public void setId(Long id) {this.id = id;}
+	protected void setId(Long id) {this.id = id;}
 
 
 	@Basic @NotNull private String name;
@@ -43,7 +43,7 @@ public class Officer {
 	
 	@ManyToOne private Starship starship;	
 	public Starship getStarship() {return starship;}
-	public void setStarship(Starship starship) {this.starship = starship;}
+	protected void setStarship(Starship starship) {this.starship = starship;}
 	
 	public Officer() {
 		super();

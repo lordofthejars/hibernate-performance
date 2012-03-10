@@ -14,36 +14,36 @@ public class Officer {
 
 	private Long id;
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE)public Long getId() {return id;}
-	public void setId(Long id) {this.id = id;}
+	protected void setId(Long id) {this.id = id;}
 
 
-	@Basic @NotNull private String name;
-	public String getName() {return this.name;}
+	private String name;
+	@Basic @NotNull public String getName() {return this.name;}
 	public void setName(String name) {this.name = name;}
 	
 	
-	@Enumerated private SpeciesEnum speciesEnum;
-	public SpeciesEnum getSpeciesEnum() {return speciesEnum;}
+	private SpeciesEnum speciesEnum;
+	@Enumerated public SpeciesEnum getSpeciesEnum() {return speciesEnum;}
 	public void setSpeciesEnum(SpeciesEnum speciesEnum) {this.speciesEnum = speciesEnum;}
 
 
-	@Enumerated private PlanetEnum homePlanet;
-	public PlanetEnum getHomePlanet() {return homePlanet;}
+	private PlanetEnum homePlanet;
+	@Enumerated public PlanetEnum getHomePlanet() {return homePlanet;}
 	public void setHomePlanet(PlanetEnum homePlanet) {this.homePlanet = homePlanet;}
 
 
-	@Enumerated private AffiliationEnum affiliationEnum;
-	public AffiliationEnum getAffiliationEnum() {return affiliationEnum;}
+	private AffiliationEnum affiliationEnum;
+	@Enumerated public AffiliationEnum getAffiliationEnum() {return affiliationEnum;}
 	public void setAffiliationEnum(AffiliationEnum affiliationEnum) {this.affiliationEnum = affiliationEnum;}
 
 
-	@Enumerated @NotNull private RankEnum rank;
-	public RankEnum getRank() {return rank;}
+	private RankEnum rank;
+	@Enumerated @NotNull public RankEnum getRank() {return rank;}
 	public void setRank(RankEnum rank) {this.rank = rank;}
 	
 	private Starship starship;	
 	@ManyToOne public Starship getStarship() {return starship;}
-	public void setStarship(Starship starship) {this.starship = starship;}
+	protected void setStarship(Starship starship) {this.starship = starship;}
 	
 	public Officer() {
 		super();

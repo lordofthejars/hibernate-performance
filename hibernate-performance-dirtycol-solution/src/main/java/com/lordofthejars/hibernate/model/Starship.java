@@ -1,7 +1,6 @@
 package com.lordofthejars.hibernate.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +25,7 @@ public class Starship {
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE) 
 	private Long id;
 	public Long getId() {return id;}
-	public void setId(Long id) {this.id = id;}
+	protected void setId(Long id) {this.id = id;}
 	
 	@Temporal(TemporalType.DATE) private Date launched;
 	public Date getLaunched() {return launched;}
@@ -50,10 +49,11 @@ public class Starship {
 	public Physics getPhysics() {return physics;}
 	public void setPhysics(Physics physics) {this.physics = physics;}
 	
+	
 	@OneToMany(mappedBy="starship", cascade={CascadeType.ALL}) 
 	private List<Officer> officers = new ArrayList<Officer>();
 	public List<Officer> getOfficers() {return Collections.unmodifiableList(officers);}
-	public void setOfficers(List<Officer> officers) {this.officers = officers;}
+	protected void setOfficers(List<Officer> officers) {this.officers = officers;}
 	public void addOfficer(Officer officer) {this.officers.add(officer);}
 	
 	public Starship() {

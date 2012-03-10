@@ -6,13 +6,13 @@ import static com.lordofthejars.hibernate.model.StarshipBuilder.starship;
 
 import java.util.Calendar;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -29,7 +29,7 @@ import com.lordofthejars.hibernate.model.StarshipClassEnum;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class StarshipPersistenceTests {
 
-	@Autowired
+	@Inject
 	private EntityManagerFactory entityManagerFactory;
 
 	@Test
@@ -116,7 +116,7 @@ public class StarshipPersistenceTests {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 		System.out.println("Before Find");
-		Starship found = entityManager.find(Starship.class, starship.getId());
+		Starship newStarship = entityManager.find(Starship.class, starship.getId());
 		System.out.println("After Find Before Commit");
 		transaction.commit();
 		System.out.println("After commit");

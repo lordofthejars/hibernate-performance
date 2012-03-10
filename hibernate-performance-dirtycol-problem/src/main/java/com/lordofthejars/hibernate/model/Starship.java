@@ -1,7 +1,6 @@
 package com.lordofthejars.hibernate.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +10,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,35 +23,36 @@ import javax.validation.constraints.NotNull;
 public class Starship {
 
 	
+	
 	private Long id;
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE) public Long getId() {return id;}
 	public void setId(Long id) {this.id = id;}
 	
-	@Temporal(TemporalType.DATE) private Date launched;
-	public Date getLaunched() {return launched;}
+	private Date launched;
+	@Temporal(TemporalType.DATE)  public Date getLaunched() {return launched;}
 	public void setLaunched(Date launched) {this.launched = launched;}
 
-	@Basic @NotNull private String registry;
-	public String getRegistry() {return registry;}
+	private String registry;
+	@Basic @NotNull  public String getRegistry() {return registry;}
 	public void setRegistry(String registry) {this.registry = registry;}
 	
-	@Enumerated private StarshipClassEnum starshipClassEnum;
-	public StarshipClassEnum getStarshipClassEnum() {return starshipClassEnum;}
+	private StarshipClassEnum starshipClassEnum;
+	@Enumerated public StarshipClassEnum getStarshipClassEnum() {return starshipClassEnum;}
 	public void setStarshipClassEnum(StarshipClassEnum starshipClassEnum) {this.starshipClassEnum = starshipClassEnum;}
 	
 	
-	@Enumerated private AffiliationEnum affiliationEnum;
-	public AffiliationEnum getAffiliationEnum() {return affiliationEnum;}
+	private AffiliationEnum affiliationEnum;
+	@Enumerated public AffiliationEnum getAffiliationEnum() {return affiliationEnum;}
 	public void setAffiliationEnum(AffiliationEnum affiliationEnum) {this.affiliationEnum = affiliationEnum;}
 	
 	
-	@Embedded private Physics physics;
-	public Physics getPhysics() {return physics;}
+	private Physics physics;
+	@Embedded public Physics getPhysics() {return physics;}
 	public void setPhysics(Physics physics) {this.physics = physics;}
 	
 	private List<Officer> officers = new ArrayList<Officer>();
 	@OneToMany(cascade={CascadeType.ALL}) public List<Officer> getOfficers() {return Collections.unmodifiableList(officers);}
-	public void setOfficers(List<Officer> officers) {this.officers = officers;}
+	protected void setOfficers(List<Officer> officers) {this.officers = officers;}
 	public void addOfficer(Officer officer) {this.officers.add(officer);}
 	
 	public Starship() {
