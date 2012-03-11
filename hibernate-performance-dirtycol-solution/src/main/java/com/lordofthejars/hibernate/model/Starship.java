@@ -5,8 +5,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -16,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -31,7 +30,7 @@ public class Starship {
 	public Date getLaunched() {return launched;}
 	public void setLaunched(Date launched) {this.launched = launched;}
 
-	@Basic @NotNull private String registry;
+	@Column(unique=true, nullable=false) private String registry;
 	public String getRegistry() {return registry;}
 	public void setRegistry(String registry) {this.registry = registry;}
 	

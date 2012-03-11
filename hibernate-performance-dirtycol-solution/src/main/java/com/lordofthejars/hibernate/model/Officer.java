@@ -1,6 +1,6 @@
 package com.lordofthejars.hibernate.model;
 
-import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -17,7 +17,7 @@ public class Officer {
 	protected void setId(Long id) {this.id = id;}
 
 
-	@Basic @NotNull private String name;
+	@Column(unique=true, nullable=false) private String name;
 	public String getName() {return this.name;}
 	public void setName(String name) {this.name = name;}
 	
@@ -50,16 +50,14 @@ public class Officer {
 	}
 	
 	public Officer(String name, RankEnum rank) {
-		this.name = name;
-		this.rank = rank;
+		setName(name);
+		setRank(rank);
 	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((rank == null) ? 0 : rank.hashCode());
 		return result;
 	}
 	@Override
@@ -76,11 +74,8 @@ public class Officer {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (rank != other.rank)
-			return false;
 		return true;
 	}
-	
 	
 	
 }
