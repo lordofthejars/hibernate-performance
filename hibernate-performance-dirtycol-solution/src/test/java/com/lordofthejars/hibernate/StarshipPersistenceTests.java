@@ -96,7 +96,7 @@ public class StarshipPersistenceTests {
 				.build();
 		starship.addOfficer(beverlyCrusher);
 
-		Officer deannaTroi = officer().name("DeannaTroi")
+		Officer deannaTroi = officer().name("Deanna Troi")
 				.rank(RankEnum.COMMANDER)
 				.affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.BETAZED).speciment(SpeciesEnum.BETAZOID)
