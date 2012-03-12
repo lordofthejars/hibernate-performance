@@ -59,48 +59,48 @@ public class StarshipPersistenceTests {
 		Officer jeanLucPicard = officer().name("Jean-Luc Picard")
 				.rank(RankEnum.CAPTAIN).affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.EARTH).speciment(SpeciesEnum.HUMAN)
-				.serves(starship).build();
+				.build();
 		starship.addOfficer(jeanLucPicard);
 
 		Officer williamRiker = officer().name("William Riker")
 				.rank(RankEnum.COMMANDER)
 				.affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.EARTH).speciment(SpeciesEnum.HUMAN)
-				.serves(starship).build();
+				.build();
 		starship.addOfficer(williamRiker);
 
 		Officer data = officer().name("Data")
 				.rank(RankEnum.LIEUTENANT_COMMANDER)
 				.affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.OMICRON_THETA)
-				.speciment(SpeciesEnum.ANDROID).serves(starship).build();
+				.speciment(SpeciesEnum.ANDROID).build();
 		starship.addOfficer(data);
 
 		Officer geordiLaForge = officer().name("Geordi La Forge")
 				.rank(RankEnum.LIEUTENANT)
 				.affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.EARTH).speciment(SpeciesEnum.HUMAN)
-				.serves(starship).build();
+				.build();
 		starship.addOfficer(geordiLaForge);
 
 		Officer worf = officer().name("Worf").rank(RankEnum.LIEUTENANT)
 				.affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.QONOS).speciment(SpeciesEnum.KLINGON)
-				.serves(starship).build();
+				.build();
 		starship.addOfficer(worf);
 
 		Officer beverlyCrusher = officer().name("Beverly Crusher")
 				.rank(RankEnum.COMMANDER)
 				.affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.EARTH).speciment(SpeciesEnum.HUMAN)
-				.serves(starship).build();
+				.build();
 		starship.addOfficer(beverlyCrusher);
 
 		Officer deannaTroi = officer().name("DeannaTroi")
 				.rank(RankEnum.COMMANDER)
 				.affiliation(AffiliationEnum.STARFLEET)
 				.homePlanet(PlanetEnum.BETAZED).speciment(SpeciesEnum.BETAZOID)
-				.serves(starship).build();
+				.build();
 		starship.addOfficer(deannaTroi);
 
 		entityManager.persist(starship);
@@ -115,9 +115,9 @@ public class StarshipPersistenceTests {
 		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
-		System.out.println("Before Find");
+		System.out.println("Before Find Starship By Id");
 		Starship newStarship = entityManager.find(Starship.class, starship.getId());
-		System.out.println("After Find Before Commit");
+		System.out.println("After Find Starship By Id and Before Commit");
 		transaction.commit();
 		System.out.println("After commit");
 		entityManager.close();

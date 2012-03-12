@@ -52,7 +52,11 @@ public class Starship {
 	private List<Officer> officers = new ArrayList<Officer>();
 	@OneToMany(cascade={CascadeType.ALL}) public List<Officer> getOfficers() {return Collections.unmodifiableList(officers);}
 	protected void setOfficers(List<Officer> officers) {this.officers = officers;}
-	public void addOfficer(Officer officer) {this.officers.add(officer);}
+	
+	public void addOfficer(Officer officer) {
+		officer.setStarship(this);
+		this.officers.add(officer);
+	}
 	
 	public Starship() {
 		super();
