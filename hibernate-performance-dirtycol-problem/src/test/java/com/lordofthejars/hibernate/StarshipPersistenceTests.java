@@ -13,6 +13,8 @@ import javax.persistence.EntityTransaction;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -29,11 +31,13 @@ import com.lordofthejars.hibernate.model.StarshipClassEnum;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class StarshipPersistenceTests {
 
+	private Logger log = LoggerFactory.getLogger(StarshipPersistenceTests.class);
+	
 	@Inject
 	private EntityManagerFactory entityManagerFactory;
 
 	@Test
-	public void testSaveOrderWithItems() throws Exception {
+	public void shouldSaveStarshipWithOfficers() throws Exception {
 
 		Starship starship = createData();
 		findStarship(starship);
@@ -115,11 +119,11 @@ public class StarshipPersistenceTests {
 		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
-		System.out.println("Before Find Starship By Id");
+		log.info("Before Find Starship By Id");
 		Starship newStarship = entityManager.find(Starship.class, starship.getId());
-		System.out.println("After Find Starship By Id and Before Commit");
+		log.info("After Find Starship By Id and Before Commit");
 		transaction.commit();
-		System.out.println("After commit");
+		log.info("After commit");
 		entityManager.close();
 
 	}
